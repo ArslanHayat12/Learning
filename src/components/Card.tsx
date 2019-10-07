@@ -2,9 +2,9 @@ import React from "react";
 import { CardStyles, ProgressStyles } from "./styles";
 import { Icon, Tag } from "antd";
 import { CardProps } from "antd/lib/card";
-import { DepartmentProps } from "../pages/Department/Department";
 import { TAGS_COLORS } from "../constants";
 import Avatar from "./Avatar";
+import { DepartmentProps } from "../pages/types";
 
 interface CardDataProps extends CardProps {
   data?: DepartmentProps;

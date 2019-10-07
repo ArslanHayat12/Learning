@@ -1,9 +1,9 @@
 import React from "react";
 import { AvatarStyles } from "./styles";
 import { AvatarProps } from "antd/lib/avatar";
-import { EmployeeProps } from "../pages/Department/Department";
 import { CUSTOM_COLORS, SHOW_AVATARS_COUNT } from "../constants";
 import { getFirstLetter } from "../utils";
+import { EmployeeProps } from "../pages/types";
 
 interface AvatarDataProps extends AvatarProps {
   employees?: EmployeeProps[];

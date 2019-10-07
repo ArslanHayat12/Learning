@@ -5,6 +5,7 @@ import "./App.css";
 import "antd/dist/antd.css";
 import Header from "./components/Header";
 import Routes from "./routes";
+import { AppContextProvider } from "./AppContext";
 const App: React.FC = () => {
   return (
     <AppStyles>
@@ -13,10 +14,12 @@ const App: React.FC = () => {
           <div className="logo"> Learning </div>
         </SiderStyle>
         <Layout>
-          <Header />
-          <ContentStyle>
-            <Routes />
-          </ContentStyle>
+          <AppContextProvider>
+            <Header />
+            <ContentStyle>
+              <Routes />
+            </ContentStyle>
+          </AppContextProvider>
         </Layout>
       </Layout>
     </AppStyles>

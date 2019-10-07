@@ -1,20 +1,8 @@
-import React from "react";
-import Card from "../../components/Card";
-import { List } from "antd";
-export type EmployeeProps = { name?: string; url?: string };
-export type DepartmentProps = {
-  title?: string;
-  categories?: string[];
-  employees?: EmployeeProps[];
-  total_projects?: number;
-  total_employees?: number;
-  running_projects?: number;
-  progress?: {
-    ratio: number;
-    color?: string;
-  };
-};
-export type DepartmentalDataProps = DepartmentProps[];
+import React, { useEffect } from "react";
+import CardPanel from "../../components/CardPanel";
+import { useAppContext } from "../../AppContext";
+import { DepartmentalDataProps } from "../types";
+
 const data: DepartmentalDataProps = [
   {
     title: "Engineering",
@@ -120,26 +108,11 @@ const data: DepartmentalDataProps = [
     }
   }
 ];
-
 const Department = () => {
-  return (
-    <List
-      grid={{
-        gutter: 16,
-        xs: 1,
-        sm: 2,
-        md: 3,
-        lg: 3,
-        xl: 3,
-        xxl: 3
-      }}
-      dataSource={data}
-      renderItem={department => (
-        <List.Item>
-          <Card data={department}></Card>
-        </List.Item>
-      )}
-    />
-  );
+  const { dispatch } = useAppContext();
+  useEffect(() => {
+    dispatch({ type: "UPDATE_DEPARTMENT", data });
+  }, []);
+  return <CardPanel />;
 };
 export default Department;
