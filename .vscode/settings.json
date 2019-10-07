@@ -1,0 +1,5 @@
+{
+    "files.autoSave": "onFocusChange",
+    "prettier.jsxBracketSameLine": true,
+    "prettier.alignObjectProperties": true
+}
