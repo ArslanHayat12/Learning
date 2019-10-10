@@ -3,10 +3,10 @@ import { AvatarStyles } from "./styles";
 import { AvatarProps } from "antd/lib/avatar";
 import { CUSTOM_COLORS, SHOW_AVATARS_COUNT } from "../constants";
 import { getFirstLetter } from "../utils";
-import { EmployeeProps } from "../pages/types";
+import { EmployeeProps, EmployeeDataProps } from "../pages/types";
 
 interface AvatarDataProps extends AvatarProps {
-  employees?: EmployeeProps[];
+  employees?: EmployeeDataProps;
 }
 const Avatar = ({ employees }: AvatarDataProps) => {
   const employeesData =
@@ -18,9 +18,12 @@ const Avatar = ({ employees }: AvatarDataProps) => {
   return (
     <div className="employee-avatar">
       {employeesData.map((employee: EmployeeProps, index: number) => {
-        if (employee.url)
+        if (employee.imageUrl)
           return (
-            <AvatarStyles color={CUSTOM_COLORS[index]} src={employee.url} />
+            <AvatarStyles
+              color={CUSTOM_COLORS[index]}
+              src={employee.imageUrl}
+            />
           );
         if (employee.name) {
           return (

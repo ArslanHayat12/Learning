@@ -1,26 +1,32 @@
-import React from "react";
+import React, { useState, useCallback } from "react";
 import { Icon, Menu, Dropdown } from "antd";
 import { HeaderStyle } from "../styles";
 import { ButtonStyles } from "./styles";
+import { Modal } from "./Modal";
+import AddDepartment from "../pages/Department/AddDepartment";
 const Header: React.FC = () => {
+  const [visible, setVisible] = useState(false);
+  const [state, setState] = useState("");
+
+  const handleMenuClick = useCallback(event => {
+    setState(event.key);
+    setVisible(true);
+  }, []);
+
+  const handleCancel = useCallback((event: any) => {
+    setState("");
+    setVisible(false);
+  }, []);
+
+  const handleOk = useCallback((event: any) => {
+    setState("");
+    setVisible(false);
+  }, []);
+
   const menu = (
-    <Menu>
-      <Menu.Item>
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="http://www.alipay.com/">
-          Add Department
-        </a>
-      </Menu.Item>
-      <Menu.Item>
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="http://www.taobao.com/">
-          Add Employee
-        </a>
-      </Menu.Item>
+    <Menu onClick={handleMenuClick}>
+      <Menu.Item key="department">Add Department</Menu.Item>
+      <Menu.Item key="employee">Add Employee</Menu.Item>
     </Menu>
   );
   return (
@@ -33,6 +39,13 @@ const Header: React.FC = () => {
           </ButtonStyles>
         </Dropdown>
       </div>
+      <Modal
+        visible={visible}
+        title={state}
+        handleCancel={handleCancel}
+        handleOk={handleOk}>
+        {state === "department" ? <AddDepartment /> : state}
+      </Modal>
     </HeaderStyle>
   );
 };

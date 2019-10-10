@@ -1,5 +1,5 @@
 import React, { useContext, createContext, useReducer } from "react";
-import { departmentReducer } from "./reducers";
+import { departmentReducer, employeeReducer } from "./reducers";
 import { useCombinedReducers } from "./hooks/useCombineReducer";
 import { AppProps } from "./pages/types";
 
@@ -14,7 +14,8 @@ export const useAppContext = () => useContext(AppContext);
 
 export const AppContextProvider = (props: any) => {
   const [state, dispatch] = useCombinedReducers({
-    departments: useReducer(departmentReducer, [])
+    departments: useReducer(departmentReducer, []),
+    employees: useReducer(employeeReducer, [])
   });
   return (
     <AppContext.Provider value={{ state, dispatch }}>

@@ -5,19 +5,10 @@ import { DepartmentalDataProps } from "../types";
 
 const data: DepartmentalDataProps = [
   {
+    id:1,
     title: "Engineering",
     categories: ["Backend", "Frontend", "Designer"],
-    employees: [
-      { name: "ABC", url: "https://img.icons8.com/clouds/100/000000/user.png" },
-      { name: "CDE", url: "https://img.icons8.com/clouds/100/000000/user.png" },
-      { name: "FGH" },
-      {
-        name: "IGK",
-        url: "https://img.icons8.com/dusk/64/000000/change-user-male.png"
-      },
-      { name: "LMN" },
-      { name: "OPQ", url: "https://img.icons8.com/clouds/100/000000/user.png" }
-    ],
+    employees: [],
     total_projects: 12,
     total_employees: 13,
     running_projects: 14,
@@ -27,19 +18,10 @@ const data: DepartmentalDataProps = [
     }
   },
   {
+    id:0,
     title: "Networking",
-    categories: ["Backend", "Frontend", "Designer"],
-    employees: [
-      { name: "ABC" },
-      { name: "CDE", url: "" },
-      { name: "FGH" },
-      {
-        name: "IGK",
-        url: "https://img.icons8.com/dusk/64/000000/change-user-male.png"
-      },
-      { name: "LMN" },
-      { name: "OPQ", url: "https://img.icons8.com/clouds/100/000000/user.png" }
-    ],
+    categories: [],
+    employees: [],
     total_projects: 12,
     total_employees: 13,
     running_projects: 14,
@@ -48,19 +30,10 @@ const data: DepartmentalDataProps = [
     }
   },
   {
-    title: "Engineering",
-    categories: ["Backend", "Frontend", "Designer"],
-    employees: [
-      { name: "ABC" },
-      { name: "CDE", url: "" },
-      { name: "FGH" },
-      {
-        name: "IGK",
-        url: "https://img.icons8.com/dusk/64/000000/change-user-male.png"
-      },
-      { name: "LMN" },
-      { name: "OPQ", url: "https://img.icons8.com/clouds/100/000000/user.png" }
-    ],
+    id:2,
+    title: "Creative Services",
+    categories: [],
+    employees: [],
     total_projects: 12,
     total_employees: 13,
     running_projects: 14,
@@ -71,17 +44,7 @@ const data: DepartmentalDataProps = [
   {
     title: "Engineering",
     categories: ["Backend", "Frontend", "Designer"],
-    employees: [
-      { name: "ABC" },
-      { name: "CDE", url: "https://img.icons8.com/clouds/100/000000/user.png" },
-      { name: "FGH" },
-      {
-        name: "IGK",
-        url: "https://img.icons8.com/dusk/64/000000/change-user-male.png"
-      },
-      { name: "LMN" },
-      { name: "OPQ", url: "https://img.icons8.com/clouds/100/000000/user.png" }
-    ],
+    employees: [],
     total_projects: 12,
     total_employees: 13,
     running_projects: 14,
@@ -92,14 +55,7 @@ const data: DepartmentalDataProps = [
   {
     title: "Engineering",
     categories: ["Backend", "Frontend", "Designer"],
-    employees: [
-      { name: "ABC" },
-      { name: "CDE", url: "" },
-      { name: "FGH" },
-      { name: "IGK", url: "" },
-      { name: "LMN" },
-      { name: "OPQ", url: "" }
-    ],
+    employees: [],
     total_projects: 12,
     total_employees: 13,
     running_projects: 14,
@@ -112,7 +68,7 @@ const Department = () => {
   const { dispatch } = useAppContext();
   useEffect(() => {
     dispatch({ type: "UPDATE_DEPARTMENT", data });
-  }, []);
+  }, [data]);
   return <CardPanel />;
 };
 export default Department;
