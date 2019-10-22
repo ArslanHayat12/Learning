@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Card, Button, Avatar, Progress } from "antd";
+import { Card, Button, Avatar, Progress, List } from "antd";
 export const ProgressStyles = styled(Progress)`
   .ant-progress-bg {
     background-color: ${(props: { color: string }) => {
@@ -69,7 +69,7 @@ export const CardStyles = styled(Card)`
     }
   }
 `;
-export const AvatarStyles = styled(Avatar)`
+export const AvatarStyles = styled(Avatar)<any>`
   &.ant-avatar {
     margin-left: -5px;
     background-color: ${(props: { color: string }) => props.color};
@@ -85,5 +85,11 @@ export const ButtonStyles = styled(Button)`
     font-weight: 500;
     border-radius: 4px;
     text-transform: capitalize;
+  }
+`;
+
+export const ListStyles = styled(List)`
+  &.ant-list {
+    width: 100%;
   }
 `;

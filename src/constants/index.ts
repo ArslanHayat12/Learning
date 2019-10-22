@@ -9,10 +9,10 @@ export const TAGS_COLORS = [
   "gold"
 ];
 export const CUSTOM_COLORS = [
-  "#9999FF",
+  "#3399FC",
   "#FF6666",
   "#C0C0C0",
   "#3399FF",
-  "#00FF00"
+  "#3399FC"
 ];
 export const SHOW_AVATARS_COUNT = 4;

@@ -1,15 +1,16 @@
 import React from "react";
 import { CardStyles, ProgressStyles } from "./styles";
-import { Icon, Tag } from "antd";
+import { Icon, Tag, Popconfirm } from "antd";
 import { CardProps } from "antd/lib/card";
 import { TAGS_COLORS } from "../constants";
 import Avatar from "./Avatar";
-import { DepartmentProps } from "../pages/types";
 
-interface CardDataProps extends CardProps {
-  data?: DepartmentProps;
+export interface CardDataProps extends CardProps {
+  data?: any;
+  confirmDeletion?: any;
 }
-const Card = ({ data }: CardDataProps) => {
+const Card = (props: CardDataProps) => {
+  const { data, confirmDeletion } = props;
   if (data) {
     const {
       title,
@@ -17,8 +18,8 @@ const Card = ({ data }: CardDataProps) => {
       categories,
       total_projects,
       running_projects,
-      total_employees,
-      progress
+      progress,
+      id
     } = data;
     const percentage = (progress && progress.ratio) || 0;
     const color =
@@ -27,20 +28,28 @@ const Card = ({ data }: CardDataProps) => {
         : percentage >= 30 && percentage <= 80
         ? "#1890ff"
         : "#52c41a";
-
     return (
       <CardStyles>
         <div className="title-conatiner">
           <div className="title">{title}</div>
           <div className="actions">
-            <Icon type="more" />
+            <Popconfirm
+              title={`Are you sure delete this ${title} department?`}
+              onConfirm={() => confirmDeletion({ title, id })}
+              okText="Yes"
+              cancelText="No">
+              <Icon type="close-circle" theme="twoTone" twoToneColor="red" />
+            </Popconfirm>
           </div>
         </div>
         <div className="sub-categories">
-          {categories &&
+          {categories && categories.length ? (
             categories.map((category: string, index: number) => (
               <Tag color={TAGS_COLORS[index] || "red"}>{category}</Tag>
-            ))}
+            ))
+          ) : (
+            <Tag color={TAGS_COLORS[0] || "red"}>{""}</Tag>
+          )}
         </div>
         <div className="employee-project-container">
           <Avatar employees={employees} />
@@ -57,7 +66,7 @@ const Card = ({ data }: CardDataProps) => {
             <Icon type="project" /> {total_projects}
           </div>
           <div className="employees">
-            <Icon type="usergroup-add" /> {total_employees}
+            <Icon type="usergroup-add" /> {employees.length}
           </div>
         </div>
       </CardStyles>

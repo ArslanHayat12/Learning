@@ -25,10 +25,10 @@ const Avatar = ({ employees }: AvatarDataProps) => {
               src={employee.imageUrl}
             />
           );
-        if (employee.name) {
+        if (employee.fullName) {
           return (
             <AvatarStyles color={CUSTOM_COLORS[index]}>
-              {getFirstLetter(employee.name)}
+              {getFirstLetter(employee.fullName)}
             </AvatarStyles>
           );
         }

@@ -2,8 +2,8 @@ import React from "react";
 import { Menu } from "antd";
 import { Switch } from "react-router";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import Button from "../components/Button";
 import Department from "../pages/Department/Department";
+import Employees from "../pages/Employees/Employees";
 const Routes: React.FC = () => {
   return (
     <Router>
@@ -20,7 +20,7 @@ const Routes: React.FC = () => {
       <div className="content">
         <Switch>
           <Route exact path="/departments" component={Department} />
-          <Route exact path="/employees" component={Button} />
+          <Route exact path="/employees" component={Employees} />
         </Switch>
       </div>
     </Router>
